@@ -6,70 +6,70 @@
 	
 
 
-int get_integer() const
+int Fraction::get_integer() const
 {
 	return integer;
 }
-int get_numerator() const
+int Fraction::get_numerator() const
 {
 	return numerator;
 }
-int get_denominator() const
+int Fraction::get_denominator() const
 {
 	return denominator;
 }
 
 
 
-void set_integer(int integer)
+void Fraction::set_integer(int integer)
 {
 	this->integer = integer;
 }
-void set_numerator(int numerator)
+void Fraction::set_numerator(int numerator)
 {
 	this->numerator = numerator;
 }
-void set_denominator(int denominator)
+void Fraction::set_denominator(int denominator)
 {
 	this->denominator = denominator;
 }
 
 //			Constructors:
-Fraction()
+Fraction::Fraction()
 {
 	this->integer = 0;
 	this->numerator = 0;
 	this->denominator = 1;
 	cout << "DefConstructor: \t" << this << endl;
 }
-Fraction(int integer)
+Fraction::Fraction(int integer)
 {
 	this->integer = integer;
 	this->numerator = 0;
 	this->denominator = 1;
 	cout << "Constructor: \t" << this << endl;
 }
-Fraction(int numerator, int denominator)
+Fraction::Fraction(int numerator, int denominator)
 {
 	this->integer = 0;
 	this->numerator = numerator;
 	this->denominator = denominator;
 	cout << "constructor: \t" << this << endl;
 }
-Fraction(int integer, int numerator, int denominator)
+Fraction::Fraction(int integer, int numerator, int denominator)
 {
 	this->integer = integer;
 	this->numerator = numerator;
 	this->denominator = denominator;
 	cout << "constructor: \t" << this << endl;
 }
-~Fraction()
+Fraction::~Fraction()
 {
 	cout << "destructor: \t" << this << endl;
 }
 
 //			Operators:
-Fraction& operator=(const Fraction& other)
+Fraction& Fraction::operator=(const Fraction& other)
 {
 	this->integer = other.integer;
 	this->numerator = other.numerator;
@@ -77,7 +77,7 @@ Fraction& operator=(const Fraction& other)
 	return*this;
 }
 
-Fraction& operator*=(const Fraction& other)
+Fraction& Fraction::operator*=(const Fraction& other)
 {
 	int a = 2;
 	int b = 3;
@@ -85,12 +85,12 @@ Fraction& operator*=(const Fraction& other)
 	return *this = *this*other;
 }
 
-Fraction operator++()
+Fraction Fraction::operator++()
 {
 	this->integer++;
 	return *this;
 }
-Fraction operator++(int)
+Fraction Fraction::operator++(int)
 {
 	Fraction temp = *this;
 	this->integer++;
@@ -98,12 +98,12 @@ Fraction operator++(int)
 }
 
 //			Methods:
-void to_proper()//переводит дробь в правильную
+void Fraction::to_proper()//переводит дробь в правильную
 {
 	integer = numerator / denominator;
 	numerator = numerator % denominator;
 }
-void to_improper()//переводит дробь в неправильную
+void Fraction::to_improper()//переводит дробь в неправильную
 {
 	numerator = (integer*denominator) + numerator;
 	this->integer = 0;
@@ -115,7 +115,7 @@ void to_improper()//переводит дробь в неправильную
 
 
 //}
-void reduce()
+void Fraction::reduce()
 {
 	int value = this->numerator;
 	if (value < 0)value *= -1;
@@ -130,7 +130,7 @@ void reduce()
 	}
 	//сокращает дробь
 }
-Fraction operator*(const Fraction&other) const
+Fraction Fraction::operator*(const Fraction&other) const
 {
 	Fraction left = *this;
 	Fraction right = other;
@@ -139,7 +139,7 @@ Fraction operator*(const Fraction&other) const
 	return Fraction(left.numerator * right.numerator, left.denominator*right.denominator);
 }
 
-void Print()
+void Fraction::Print()
 {
 	cout << integer << numerator << denominator;
 }
